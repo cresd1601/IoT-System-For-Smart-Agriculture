@@ -1,0 +1,45 @@
+{
+  "name": "iot-system",
+  "version": "1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000 -H 0.0.0.0",
+    "build": "next build --no-lint",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.7",
+    "@mui/material": "^5.14.7",
+    "@mui/x-data-grid": "^6.12.0",
+    "@mui/x-date-pickers": "^7.14.0",
+    "@nivo/bar": "^0.87.0",
+    "@nivo/core": "^0.87.0",
+    "@nivo/geo": "^0.87.0",
+    "@nivo/line": "^0.87.0",
+    "@nivo/pie": "^0.87.0",
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "axios": "^1.7.5",
+    "dayjs": "^1.11.13",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "formik": "^2.4.3",
+    "fullcalendar": "^6.1.8",
+    "next": "^14.2.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
+    "react-toastify": "^10.0.5",
+    "swr": "^2.2.5",
+    "typescript": "5.2.2",
+    "yup": "^1.2.0",
+    "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.1.0"
+  }
+}

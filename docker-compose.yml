@@ -1,0 +1,87 @@
+services:
+  database:
+    image: mysql:latest
+    container_name: database
+    environment:
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mqtt-network
+
+  mqtt-broker:
+    build: ./mqtt-broker
+    container_name: mqtt-broker
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mqtt-broker/config:/mosquitto/config
+      - ./mqtt-broker/data:/mosquitto/data
+      - ./mqtt-broker/log:/mosquitto/log
+    networks:
+      - mqtt-network
+
+  service-worker:
+    build: ./service-worker
+    container_name: service-worker
+    environment:
+      - REDIS_URL
+      - SERVICE_IP
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    depends_on:
+      - redis
+      - database
+      - mqtt-broker
+
+    networks:
+      - mqtt-network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - mqtt-network
+
+  web-api:
+    build: ./web-api
+    container_name: web-api
+    environment:
+      - FLASK_ENV
+      - REDIS_URL
+      - SERVICE_IP
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    depends_on:
+      - redis
+      - database
+    ports:
+      - "5000:5000"
+    networks:
+      - mqtt-network
+
+  web-client:
+    build: ./web-client
+    container_name: web-client
+    environment:
+      - NEXT_PUBLIC_SERVICE_IP=${SERVICE_IP}
+    ports:
+      - "3000:3000"
+    networks:
+      - mqtt-network
+
+volumes:
+  mysql_data:
+
+networks:
+  mqtt-network:
+    driver: bridge

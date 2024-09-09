@@ -1,0 +1,39 @@
+### Get all sensors
+GET http://localhost:5000/api/sensors
+Accept: application/json
+
+###
+
+### Create a new sensor
+POST http://localhost:5000/api/sensors
+Content-Type: application/json
+
+{
+  "name": "Temperature Sensor",
+  "type_id": 1,
+  "location_id": 2
+}
+
+###
+
+### Get a sensor by ID
+GET http://localhost:5000/api/sensors/1
+Accept: application/json
+
+###
+
+### Update a sensor
+PUT http://localhost:5000/api/sensors/1
+Content-Type: application/json
+
+{
+  "name": "Updated Temperature Sensor",
+  "type_id": 2,
+  "location_id": 3
+}
+
+###
+
+### Delete a sensor
+DELETE http://localhost:5000/api/sensors/1
+Accept: application/json

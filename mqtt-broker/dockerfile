@@ -1,0 +1,11 @@
+# Use the official Eclipse Mosquitto image as the base
+FROM eclipse-mosquitto:latest
+
+# Copy custom configuration files if needed
+# COPY ./config/mosquitto.conf /mosquitto/config/mosquitto.conf
+
+# Expose the default MQTT port
+EXPOSE 1883
+
+# Define the entrypoint to run the MQTT broker
+ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]

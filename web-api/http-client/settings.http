@@ -1,0 +1,46 @@
+### Get all settings
+GET http://localhost:5000/api/settings
+Accept: application/json
+
+###
+
+### Create a new setting
+POST http://localhost:5000/api/settings
+Content-Type: application/json
+
+{
+  "sensor_id": 1,
+  "max_temperature": 30.5,
+  "min_temperature": 15.0,
+  "max_humidity": 70.0,
+  "min_humidity": 30.0,
+  "max_moisture": null,
+  "min_moisture": null
+}
+
+###
+
+### Get a setting by ID
+GET http://localhost:5000/api/settings/1
+Accept: application/json
+
+###
+
+### Update a setting
+PUT http://localhost:5000/api/settings/1
+Content-Type: application/json
+
+{
+  "sensor_id": 1,
+  "max_temperature": 50.0,
+  "min_temperature": 50.0,
+  "max_humidity": 50.0,
+  "min_humidity": 50.0,
+  "max_moisture": null,
+  "min_moisture": null
+}
+
+###
+
+### Delete a setting
+DELETE http://localhost:5000/api/settings/1
