@@ -1,0 +1,41 @@
+services:
+  mqtt-broker:
+    build: ./mqtt-broker
+    container_name: mqtt-broker
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mqtt-broker/config:/mosquitto/config
+      - ./mqtt-broker/data:/mosquitto/data
+      - ./mqtt-broker/log:/mosquitto/log
+    networks:
+      - mqtt-network
+
+  service-worker:
+    build: ./service-worker
+    container_name: service-worker
+    environment:
+      - REDIS_URL
+      - LOCAL_SERVICE_IP
+      - CLOUD_SERVICE_IP
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    depends_on:
+      - redis
+      - mqtt-broker
+
+    networks:
+      - mqtt-network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - mqtt-network
+
+networks:
+  mqtt-network:
+    driver: bridge

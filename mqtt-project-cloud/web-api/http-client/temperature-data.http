@@ -1,0 +1,7 @@
+### Get all moistures data
+GET http://localhost:5000/api/temperature-data?sensor-id=1
+Accept: application/json
+
+### Get moisture chart data
+GET http://localhost:5000/api/temperature-data/chart?sensor-id=1
+Accept: application/json

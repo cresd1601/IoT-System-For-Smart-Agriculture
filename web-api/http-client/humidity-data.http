@@ -1,5 +1,0 @@
-### Get all moistures data
-GET http://localhost:5000/api/humidity-data?sensor-id=1
-Accept: application/json
-
-###
