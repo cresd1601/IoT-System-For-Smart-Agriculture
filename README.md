@@ -1,5 +1,4 @@
-
-# MQTT Project Repository
+# IoT-System-For-Smart-Agriculture
 
 This repository contains four distinct projects related to the implementation of MQTT systems:
 
