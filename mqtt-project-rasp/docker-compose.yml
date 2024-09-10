@@ -36,6 +36,21 @@ services:
     networks:
       - mqtt-network
 
+  database:
+    image: mysql:latest
+    container_name: database
+    environment:
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mqtt-network
+
 networks:
   mqtt-network:
     driver: bridge
