@@ -42,16 +42,22 @@ These projects work together within the broader IoT ecosystem by sharing sensor 
 
 ## Overview of Projects
 
+![Smart Agriculture Dashboard](images/architecture.png)
+
 ### 1. `mqtt-project-cloud`
+
 Manages cloud-side logic for MQTT subscriptions and publishing sensor data to a web API. It includes integration with cloud services like Azure, web services, and database storage.
 
 ### 2. `mqtt-project-rasp`
+
 Runs on a Raspberry Pi, collecting real-time sensor data and sending it to the cloud MQTT broker.
 
 ### 3. `mqtt-project-mobile`
+
 A Flutter-based mobile application that provides a user interface for monitoring and interacting with the MQTT system.
 
 ### 4. `mqtt-project-embedded`
+
 An Arduino-based IoT node using MQTT to collect data from sensors and publish it to the MQTT broker. The node is designed to run on an Arduino device, equipped with various sensors (e.g., temperature, moisture).
 
 ## Prerequisites
@@ -70,12 +76,15 @@ An Arduino-based IoT node using MQTT to collect data from sensors and publish it
 ### 1. Cloud Deployment (`mqtt-project-cloud`)
 
 #### Build and Run
+
 1. Navigate to the `mqtt-project-cloud` directory:
+
    ```bash
    cd mqtt-project-cloud
    ```
 
 2. Build and start the services using Docker Compose:
+
    ```bash
    docker-compose up --build
    ```
@@ -85,17 +94,21 @@ An Arduino-based IoT node using MQTT to collect data from sensors and publish it
 ### 2. Raspberry Pi Deployment (`mqtt-project-rasp`)
 
 #### Build and Run
+
 1. SSH into your Raspberry Pi and clone the repository:
+
    ```bash
    git clone https://github.com/your-repo/mqtt-project.git
    ```
 
 2. Navigate to the `mqtt-project-rasp` directory:
+
    ```bash
    cd mqtt-project-rasp
    ```
 
 3. Build and start the services using Docker Compose:
+
    ```bash
    docker-compose up --build
    ```
@@ -111,10 +124,13 @@ An Arduino-based IoT node using MQTT to collect data from sensors and publish it
 
 2. **Install Dependencies**  
    Navigate to the `mqtt-project-mobile` directory:
+
    ```bash
    cd mqtt-project-mobile
    ```
+
    Install the required Flutter dependencies:
+
    ```bash
    flutter pub get
    ```
@@ -132,11 +148,13 @@ An Arduino-based IoT node using MQTT to collect data from sensors and publish it
 1. **Install the Arduino IDE**  
    Download and install the [Arduino IDE](https://www.arduino.cc/en/software) if you don't have it installed already.
 
-2. **Connect the Arduino and Sensors**  
+2. **Connect the Arduino and Sensors**
+
    - Connect your Arduino to sensors like temperature and moisture sensors.
    - Make sure the connections are properly set up (e.g., GPIO pins, power).
 
-3. **Upload the Sketch**  
+3. **Upload the Sketch**
+
    - Open the `Arduino_MQTT_IoT_Node.ino` file in the Arduino IDE:
      ```bash
      cd mqtt-project-embedded
@@ -149,6 +167,7 @@ An Arduino-based IoT node using MQTT to collect data from sensors and publish it
    Once the Arduino is connected, it will start publishing data to the MQTT broker. You can monitor this data from the cloud or mobile interface.
 
 #### Configurations
+
 - The Arduino sketch is pre-configured to work with common sensors like temperature and soil moisture sensors.
 - Modify the sketch for additional sensor types as needed.
 
